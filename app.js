@@ -6,7 +6,7 @@ AFRAME.registerComponent('rotation-reader', {
     var y = radians_to_degrees(this.el.object3D.rotation.y);
     var z = radians_to_degrees(this.el.object3D.rotation.z);
     // `rotation` is a three.js Euler using radians. `quaternion` also available.
-    console.log("x: " + x + " y: " + y + " z: " + y);
+    //console.log("x: " + x + " y: " + y + " z: " + y);
 
     // `position` is a three.js Vector3.
     //console.log(this.el.object3D.position);
