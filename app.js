@@ -1,7 +1,6 @@
 AFRAME.registerComponent('rotation-reader', {
   tick: function () {
     var x = radians_to_degrees(this.el.object3D.rotation.x) - 90;
-    var y = radians_to_degrees(this.el.object3D.rotation.y);
     var z = radians_to_degrees(this.el.object3D.rotation.z);
     var imageId = document.getElementById('imageid');
     imageId.setAttribute('src', 'AR_MATRIX_CODE_6x6/00000000' + calc(x, z) + '.png');
