@@ -55,8 +55,13 @@ AFRAME.registerComponent('hider-material', {
 AFRAME.registerComponent('next-button1', {
   init: function () {
     const nextButton1 = document.getElementById('nextbutton1')
+    const aMarker = document.getElementById('amarker');
     const nextButton1Click = (EO) => {
-      console.log(EO)
+      if (aMarker.getAttribute('rotation-reader121')) {
+        aMarker.removeAttribute('rotation-reader121');
+        aMarker.setAttribute('rotation-reader81', '');
+      }
+
     };
     nextButton1.onclick = nextButton1Click;
   }
@@ -66,8 +71,12 @@ AFRAME.registerComponent('next-button1', {
 AFRAME.registerComponent('next-button2', {
   init: function () {
     const nextButton2 = document.getElementById('nextbutton2')
+    const aMarker = document.getElementById('amarker');
     const nextButton2Click = (EO) => {
-      console.log(EO)
+      if (aMarker.getAttribute('rotation-reader81')) {
+        aMarker.removeAttribute('rotation-reader81');
+        aMarker.setAttribute('rotation-reader121','');
+      }
     };
     nextButton2.onclick = nextButton2Click;
   }
