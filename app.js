@@ -1,3 +1,4 @@
+
 AFRAME.registerComponent('rotation-reader81', {
   tick: function () {
     var x = radians_to_degrees(this.el.object3D.rotation.x) - 90;
@@ -20,7 +21,6 @@ AFRAME.registerComponent('rotation-reader81', {
   }
 });
 
-
 AFRAME.registerComponent('rotation-reader121', {
   tick: function () {
     var x = radians_to_degrees(this.el.object3D.rotation.x) - 90;
@@ -37,7 +37,7 @@ AFRAME.registerComponent('rotation-reader121', {
       if (tempIndex <= 121 && tempIndex >= 100) imageIndex = tempIndex;
       if (tempIndex < 100 && tempIndex >= 10) imageIndex = '0' + tempIndex;
       if (tempIndex < 10 && tempIndex >= 0) imageIndex = '00' + tempIndex;
-      if (tempIndex < 0) imageIndex = '00';
+      if (tempIndex < 0) imageIndex = '000';
       if (tempIndex > 121) imageIndex = '121';
       return imageIndex
     }
@@ -50,3 +50,27 @@ AFRAME.registerComponent('hider-material', {
     mesh.material.colorWrite = false
   },
 })
+
+
+AFRAME.registerComponent('next-button1', {
+  init: function () {
+    const nextButton1 = document.getElementById('nextbutton1')
+    const nextButton1Click = (EO) => {
+      console.log(EO)
+    };
+    nextButton1.onclick = nextButton1Click;
+  }
+})
+
+
+AFRAME.registerComponent('next-button2', {
+  init: function () {
+    const nextButton2 = document.getElementById('nextbutton2')
+    const nextButton2Click = (EO) => {
+      console.log(EO)
+    };
+    nextButton2.onclick = nextButton2Click;
+  }
+})
+
+
