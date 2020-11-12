@@ -12,6 +12,7 @@
     <!--<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
     <script src="aframe-ar.js"></script>
     <script src="app.js"></script>
+    <script src="marker-events.js"></script>
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
@@ -21,7 +22,7 @@
         <a-assets>
             <img id="img-0" src="AR_MATRIX_CODE_6x6/start.png">
         </a-assets>
-        <a-marker id="amarker" preset="hiro" rotation-reader81>
+        <a-marker id="amarker" preset="hiro" rotation-reader81 registerevents>
             <!--<a-image id="imageid" src="#img-0" rotation="-90 0 0"></a-image>-->
             <a-box id="imageid" src="#img-0" position="0 0 0" scale="1 1 1"></a-box>
 
