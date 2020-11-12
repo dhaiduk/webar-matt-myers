@@ -21,13 +21,17 @@
         <a-assets>
             <img id="img-0" src="AR_MATRIX_CODE_6x6/start.png">
         </a-assets>
-        <a-marker id="amarker" preset="hiro" rotation-reader121>
-            <a-image id="imageid" src="#img-0" rotation="-90 0 0"></a-image>
+        <a-marker id="amarker" preset="hiro" rotation-reader81>
+            <!--<a-image id="imageid" src="#img-0" rotation="-90 0 0"></a-image>-->
+            <a-box id="imageid" src="#img-0" position="0 0 0" scale="1 1 1"></a-box>
+
+
+            <!--Hider & Occluder 
             <a-box position="0 0 0.9" scale="1 0.1 1" hider-material></a-box>
             <a-box position="0 0 -0.9" scale="1 0.1 1" hider-material></a-box>
             <a-box position="0.9 0 0" scale="1 0.1 1" hider-material></a-box>
-            <a-box position="-0.9 0 0" scale="1 0.1 1" hider-material></a-box>
-            </a-plane>
+            <a-box position="-0.9 0 0" scale="1 0.1 1" hider-material></a-box>-->
+
         </a-marker>
         <a-entity camera>
         </a-entity>
