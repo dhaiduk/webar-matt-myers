@@ -88,7 +88,7 @@ AFRAME.registerComponent('mesh-acces', {
   init: function () {
     // instantiate a loader
     const scene = this.el.sceneEl.object3D;
-    //const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'].children['0'].children['0'];
+    //const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'].children['0'].children['0'].children['0'];
     const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'];
     console.log("scene");
     console.log(scene);
@@ -97,8 +97,8 @@ AFRAME.registerComponent('mesh-acces', {
     
 
 
-    for (var i = 0; i <= this.el.sceneEl.object3D.lenght; i++) console.log(this.el.sceneEl.object3D.children[i]);
-    console.log(mesh.name.indexOf("Rectangle062"));
+    //for (var i = 0; i <= this.el.sceneEl.object3D.lenght; i++) console.log(this.el.sceneEl.object3D.children[i]);
+    //console.log(mesh.name.indexOf("Rectangle062"));
 
     const loader = new THREE.TextureLoader();
 
@@ -109,17 +109,18 @@ AFRAME.registerComponent('mesh-acces', {
 
       // onLoad callback
       function (texture) {
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
-        texture.repeat.set( 1, 1 );
+        texture.wrapS = texture.wrapT = THREE.RepeatWrappingж
+        //texture.repeat.set(2, 2 );
         texture.flipY = false;
         console.log('texture');
         console.log(texture);
         // in this example we create the material when the texture is loaded
-        const material = new THREE.MeshBasicMaterial({
+        /*const material = new THREE.MeshBasicMaterial({
           map: texture,
           side: THREE.DoubleSide
-        });
-
+        });*/
+        //const material = new THREE.MeshPhongMaterial( { map: texture, opacity:1, transparent: true} );
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide})
          mesh.traverse((o) => {
           if (o.isMesh) {
             o.material = material;
@@ -144,7 +145,7 @@ AFRAME.registerComponent('mesh-acces', {
 AFRAME.registerComponent('do-something', {
   init: function () {
     var textureLoader = new THREE.TextureLoader();
-    var texture = textureLoader.load('assets/images/start.png');
+    var texture = textureLoader.load('assets/images/0000000000.png');
     texture.flipY = false;
     const scene = document.getElementById('amarker').el;
     console.log(scene)
