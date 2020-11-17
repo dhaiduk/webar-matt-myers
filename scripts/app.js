@@ -110,7 +110,7 @@ AFRAME.registerComponent('mesh-acces', {
       // onLoad callback
       function (texture) {
         texture.wrapS = texture.wrapT = THREE.RepeatWrappingж
-        //texture.repeat.set(2, 2 );
+        texture.repeat.set(1, 1 );
         texture.flipY = false;
         console.log('texture');
         console.log(texture);
