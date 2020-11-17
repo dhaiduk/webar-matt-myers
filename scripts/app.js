@@ -89,21 +89,30 @@ AFRAME.registerComponent('mesh-acces', {
     // instantiate a loader
     const scene = this.el.sceneEl.object3D;
     //const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'].children['0'].children['0'];
-    const mesh = this.el.sceneEl.object3D.children['0'];
+    const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'];
+    console.log("scene");
     console.log(scene);
+    console.log("mesh");
     console.log(mesh);
-    //console.log(mesh.name.indexOf("01"));
+    
+
+
+    for (var i = 0; i <= this.el.sceneEl.object3D.lenght; i++) console.log(this.el.sceneEl.object3D.children[i]);
+    console.log(mesh.name.indexOf("Rectangle062"));
 
     const loader = new THREE.TextureLoader();
 
-    /*
+    
     loader.load(
       // resource URL
-      'Land_ocean_ice_cloud_hires.jpg',
+      'assets/Land_ocean_ice_cloud_hires.jpg',
 
       // onLoad callback
       function (texture) {
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+        texture.repeat.set( 1, 1 );
         texture.flipY = false;
+        console.log('texture');
         console.log(texture);
         // in this example we create the material when the texture is loaded
         const material = new THREE.MeshBasicMaterial({
@@ -111,13 +120,11 @@ AFRAME.registerComponent('mesh-acces', {
           side: THREE.DoubleSide
         });
 
-        mesh.traverse((o) => {
+         mesh.traverse((o) => {
           if (o.isMesh) {
-            // note: for a multi-material mesh, `o.material` may be an array,
-            // in which case you'd need to set `.map` on each value.
-            o.material.map = texture;
+            o.material = material;
           }
-        })
+        });
         },
 
           // onProgress callback currently not supported
@@ -128,9 +135,9 @@ AFRAME.registerComponent('mesh-acces', {
             console.error('An error happened.');
           }
         );
-          */
+          
 
-      },
+  },
 })
 
 

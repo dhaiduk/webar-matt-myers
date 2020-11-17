@@ -20,7 +20,15 @@
     <div class="nextbutton2" id="nextbutton2">121 &gt;</div>
     <div class="nextbutton3" id="nextbutton3">flat &gt;</div>
     <div class="nextbutton4" id="nextbutton4">3D &gt;</div>
-    <a-scene embedded arjs vr-mode-ui="enabled: false" next-button1 next-button2 mesh-acces>
+    <a-scene 
+        embedded 
+        arjs 
+        vr-mode-ui="enabled: false" 
+        next-button1 
+        next-button2 
+        mesh-acces
+        inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
+        >
         <a-assets>
             <img id="img-0" src="./assets/images/start.png">
             <!--<a-asset-item id="panel" src="panel.glb" preload="auto"></a-asset-item>-->
