@@ -7,6 +7,7 @@ AFRAME.registerComponent('rotation-reader81', {
     var z = radians_to_degrees(this.el.object3D.rotation.z);
     var imageId = document.getElementById('imageid');
     imageId.setAttribute('src', 'assets/images/00000000' + calc(x, z) + '.png');
+    currentImage = 'assets/images/00000000' + calc(x, z) + '.png';
     function radians_to_degrees(radians) {
       var pi = Math.PI;
       return radians * (180 / pi);
@@ -29,6 +30,7 @@ AFRAME.registerComponent('rotation-reader121', {
     var z = radians_to_degrees(this.el.object3D.rotation.z);
     var imageId = document.getElementById('imageid');
     imageId.setAttribute('src', 'assets/images/0000000' + calc(x, z) + '.png');
+    currentImage = 'assets/images/0000000' + calc(x, z) + '.png';
     function radians_to_degrees(radians) {
       var pi = Math.PI;
       return radians * (180 / pi);
@@ -85,7 +87,7 @@ AFRAME.registerComponent('next-button2', {
 
 
 AFRAME.registerComponent('mesh-acces', {
-  init: function () {
+  tick: function () {
     // instantiate a loader
     const scene = this.el.sceneEl.object3D;
     //const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'].children['0'].children['0'].children['0'];
@@ -94,23 +96,23 @@ AFRAME.registerComponent('mesh-acces', {
     console.log(scene);
     console.log("mesh");
     console.log(mesh);
-    
+
 
 
     //for (var i = 0; i <= this.el.sceneEl.object3D.lenght; i++) console.log(this.el.sceneEl.object3D.children[i]);
     //console.log(mesh.name.indexOf("Rectangle062"));
 
     const loader = new THREE.TextureLoader();
-
-    
     loader.load(
       // resource URL
-      'assets/Land_ocean_ice_cloud_hires.jpg',
+      currentImage,
 
       // onLoad callback
       function (texture) {
-        texture.wrapS = texture.wrapT = THREE.RepeatWrappingж
-        texture.repeat.set(1, 1 );
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+        texture.repeat.set(2, 2);
+        texture.center.set(1, 1);
+        texture.offset.set(0.1, 0.1);
         texture.flipY = false;
         console.log('texture');
         console.log(texture);
@@ -120,25 +122,26 @@ AFRAME.registerComponent('mesh-acces', {
           side: THREE.DoubleSide
         });*/
         //const material = new THREE.MeshPhongMaterial( { map: texture, opacity:1, transparent: true} );
-        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide})
-         mesh.traverse((o) => {
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide,})
+        mesh.traverse((o) => {
           if (o.isMesh) {
             o.material = material;
           }
         });
-        },
+      },
 
-          // onProgress callback currently not supported
-          undefined,
+      // onProgress callback currently not supported
+      undefined,
 
-          // onError callback
-          function (err) {
-            console.error('An error happened.');
-          }
-        );
-          
+      // onError callback
+      function (err) {
+        console.error('An error happened.');
+      }
+    );
+
 
   },
+
 })
 
 
