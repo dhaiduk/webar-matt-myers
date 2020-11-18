@@ -6,26 +6,28 @@
     <meta charset="utf-8">
     <title>QR Code</title>
     <link rel="stylesheet" type="text/css" href="./styles/index.css">
-    <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>-->
-    <script src="./scripts/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!--<script src="./scripts/aframe.min.js"></script>-->
     <!-- we import arjs version without NFT but with marker + location based support -->
-    <!--<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
-    <script src="./scripts/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!--<script src="./scripts/aframe-ar.js"></script>-->
     <script src="./scripts/app.js"></script>
     <script src="./scripts/marker-events.js"></script>
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
-    <div class="nextbutton1" id="nextbutton1">81 &gt;</div>
-    <div class="nextbutton2" id="nextbutton2">121 &gt;</div>
-    <div class="nextbutton3" id="nextbutton3">flat &gt;</div>
-    <div class="nextbutton4" id="nextbutton4">3D &gt;</div>
+    <div class="nextbutton1" id="nextbutton1">81 img</div>
+    <div class="nextbutton2" id="nextbutton2">121 img</div>
+    <div class="nextbutton3" id="nextbutton3">flat</div>
+    <div class="nextbutton4" id="nextbutton4">3D</div>
     <a-scene 
         embedded 
         arjs 
         vr-mode-ui="enabled: false" 
         next-button1 
         next-button2 
+        next-button3 
+        next-button4 
         mesh-acces
         inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
         >
@@ -34,12 +36,12 @@
             <!--<a-asset-item id="panel" src="panel.glb" preload="auto"></a-asset-item>-->
             <a-asset-item id="panel" src="./assets/models/uploads-files-1931251-Round+rosette+022.glb" preload="auto"></a-asset-item>
             <a-asset-item id="panel2" src="./assets/models/panel.glb" preload="auto"></a-asset-item>
-            <a-asset-item id="cube" src="./assets/models/cube.glb" preload="auto"></a-asset-item>
+            <a-asset-item id="cubeGlb" src="./assets/models/cube.glb" preload="auto"></a-asset-item>
         </a-assets>
 
        <a-marker id="amarker" preset="hiro" rotation-reader81 registerevents>
             <!--<a-image id="imageid" src="#img-0" rotation="-90 0 0"></a-image>-->
-            <a-box id="imageid" src="#img-0" position="0 0 0" scale="1 0.05 1"></a-box>
+            <a-box id="imageid" src="#img-0" position="0 0 0" scale="1 0.05 1" visible="true"></a-box>
             <!--Hider & Occluder 
             <a-box position="0 0 0.9" scale="1 0.1 1" hider-material></a-box>
             <a-box position="0 0 -0.9" scale="1 0.1 1" hider-material></a-box>
@@ -47,7 +49,7 @@
             <a-box position="-0.9 0 0" scale="1 0.1 1" hider-material></a-box>-->
             <!--<a-gltf-model id="glbModelDOM" src="#panel" scale="1 1 1" position="1 0.2 0" rotation="0 0 0">/a-gltf-model>
             <a-gltf-model id="glbModelDOM" src="#panel2" scale="1 1 1" position=" -1 0.2 0" rotation="0 0 0"></a-gltf-model>-->
-            <a-gltf-model id="cube" src="#cube" scale="1 1 1" position="1.1 0.2 0" rotation="0 0 0"></a-gltf-model>
+            <a-gltf-model id="cube" src="#cubeGlb" scale="1 1 1" position="0 0.2 0" rotation="0 0 0" visible="false"></a-gltf-model>
 
         </a-marker>
         <a-entity light="type: ambient; color: #BBB"></a-entity>

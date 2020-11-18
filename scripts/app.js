@@ -1,5 +1,5 @@
 
-var currentImage;
+var currentImage = 'assets/images/0000000000.png';
 
 AFRAME.registerComponent('rotation-reader81', {
   tick: function () {
@@ -63,6 +63,7 @@ AFRAME.registerComponent('next-button1', {
       if (aMarker.getAttribute('rotation-reader121')) {
         aMarker.removeAttribute('rotation-reader121');
         aMarker.setAttribute('rotation-reader81', '');
+        selectingButtoms(EO.target.id)
       }
 
     };
@@ -78,11 +79,44 @@ AFRAME.registerComponent('next-button2', {
       if (aMarker.getAttribute('rotation-reader81')) {
         aMarker.removeAttribute('rotation-reader81');
         aMarker.setAttribute('rotation-reader121', '');
+        selectingButtoms(EO.target.id)
       }
     };
     nextButton2.onclick = nextButton2Click;
   }
 })
+
+
+
+AFRAME.registerComponent('next-button3', {
+  init: function () {
+    const nextButton3 = document.getElementById('nextbutton3')
+    const imageidDOM = document.getElementById('imageid');
+    const cubeDOM = document.getElementById('cube');
+    const nextButton3Click = (EO) => {
+      imageidDOM.setAttribute('visible', 'true');
+      cubeDOM.setAttribute('visible', 'false');
+      selectingButtoms(EO.target.id)
+    };
+    nextButton3.onclick = nextButton3Click;
+  }
+})
+
+
+AFRAME.registerComponent('next-button4', {
+  init: function () {
+    const nextButton4 = document.getElementById('nextbutton4')
+    const imageidDOM = document.getElementById('imageid');
+    const cubeDOM = document.getElementById('cube');
+    const nextButton4Click = (EO) => {
+      imageidDOM.setAttribute('visible', 'false');
+      cubeDOM.setAttribute('visible', 'true');
+      selectingButtoms(EO.target.id)
+    };
+    nextButton4.onclick = nextButton4Click;
+  }
+})
+
 
 
 
@@ -92,10 +126,10 @@ AFRAME.registerComponent('mesh-acces', {
     const scene = this.el.sceneEl.object3D;
     //const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'].children['0'].children['0'].children['0'];
     const mesh = this.el.sceneEl.object3D.children['0'].children['1'].children['0'].children['0'];
-    console.log("scene");
+    /*console.log("scene");
     console.log(scene);
     console.log("mesh");
-    console.log(mesh);
+    console.log(mesh);*/
 
 
 
@@ -114,15 +148,15 @@ AFRAME.registerComponent('mesh-acces', {
         texture.center.set(1, 1);
         texture.offset.set(0.1, 0.1);
         texture.flipY = false;
-        console.log('texture');
-        console.log(texture);
+        //console.log('texture');
+        //console.log(texture);
         // in this example we create the material when the texture is loaded
         /*const material = new THREE.MeshBasicMaterial({
           map: texture,
           side: THREE.DoubleSide
         });*/
         //const material = new THREE.MeshPhongMaterial( { map: texture, opacity:1, transparent: true} );
-        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide,})
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, })
         mesh.traverse((o) => {
           if (o.isMesh) {
             o.material = material;
@@ -151,7 +185,7 @@ AFRAME.registerComponent('do-something', {
     var texture = textureLoader.load('assets/images/0000000000.png');
     texture.flipY = false;
     const scene = document.getElementById('amarker').el;
-    console.log(scene)
+    //console.log(scene)
     var loader = new THREE.GLTFLoader();
     loader.load('panel.glb', (gltf) => {
       var model = gltf.scene;
@@ -209,3 +243,43 @@ AFRAME.registerComponent('cube-env-map', {
     });
   }
 });
+
+
+
+function selectingButtoms(id) {
+  const button1 = document.getElementById('nextbutton1');
+  const button2 = document.getElementById('nextbutton2');
+  const button3 = document.getElementById('nextbutton3');
+  const button4 = document.getElementById('nextbutton4');
+
+  switch (id) {
+    case 'nextbutton1':
+      button1.style.border = '4px solid red';
+      button2.style.border = 'none';
+      break;
+
+    case 'nextbutton2':
+      button2.style.border = '4px solid red';
+      button1.style.border = 'none';
+      break;
+
+    case 'nextbutton3':
+      button3.style.border = '4px solid red';
+      button4.style.border = 'none';
+      break;
+
+    case 'nextbutton4':
+      button4.style.border = '4px solid red';
+      button3.style.border = 'none';
+      break;
+
+    default:
+      button1.style.left = '20px';
+      button2.style.left = '10px';
+      button3.style.left = '20px';
+      button4.style.left = '10px';
+      break;
+  }
+
+
+}
